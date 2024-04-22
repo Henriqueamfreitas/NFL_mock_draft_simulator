@@ -1,7 +1,8 @@
 import { PlayerCard } from "./PlayerCard"
 
-export const PlayersList = ({ players, draftingTeam, setDraftingTeam }) => {
+export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlayers }) => {
     // console.log(players)
+
     return (
         <ul>
             {
@@ -10,8 +11,12 @@ export const PlayersList = ({ players, draftingTeam, setDraftingTeam }) => {
                         <PlayerCard 
                             key={player.id} 
                             player={player}
-                            draftingTeam={draftingTeam}         
-                            setDraftingTeam={setDraftingTeam}
+                            players={players}
+                            setPlayers={setPlayers}
+                            pick={pick}         
+                            setPick={setPick}
+                            rounds={rounds}
+                            setRounds={setRounds}
                         />
                     )
                 })

@@ -1,10 +1,37 @@
-export const PlayerCard = ({ player, draftingTeam, setDraftingTeam }) => {
+export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, setPlayers }) => {
+    const draftPlayer = (player) => {
+        let updatedRounds = [...rounds]
+        updatedRounds.map(round => {
+            round.picks.map(filteredPick => {
+                if(filteredPick === pick){
+                    filteredPick["player_drafted"] = player
+                }
+            })
+        })
+        setRounds(updatedRounds)
+        
+        const updatedPlayers = players.filter(updatedPlayer => updatedPlayer !== player)        
+        setPlayers(updatedPlayers)
+        
+        console.log(rounds)
+        for(let i=0; i<rounds.length; i+=1){
+            for(let j=0; j<rounds[i].picks.length; j+=1){
+                if(rounds[i].picks[j] === pick){
+                    console.log((rounds[i].picks[j]))
+                    setPick((rounds[i].picks[j+1]))
+                }
+            }
+        }
+        // console.log(pick)
+        // Preciso setar a próxima pick
+    }
+
     return(
         <li>
             <h3>{player.name}</h3>
             <h3>{player.position}</h3>
             <h3>{player.team_name}</h3>
-            <button>Draft Player</button>
+            <button onClick={() => draftPlayer(player)}>Draft Player</button>
         </li>
     )
 }

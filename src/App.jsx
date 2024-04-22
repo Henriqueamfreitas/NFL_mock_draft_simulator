@@ -9,18 +9,13 @@ function App() {
   const [rounds, setRounds] = useState(picks.rounds)
 
   const [draftedPlayer, setDraftedPlayer] = useState(null)
-  const firstPick = rounds[0].picks.filter(pick => pick.overall === 1)[0].team.id
-
-  const [draftingTeam, setDraftingTeam] = useState(firstPick)
-
-  for(let i=0; i<rounds.length; i+=1){
-    for(let j=0; j<rounds[i].picks.length; j+=1){
-      rounds[i].picks[j]["player_drafted"] = []
-    }
-  }
+  
+  const firstPick = rounds[0].picks.filter(pick => pick.overall === 1)[0]
+  const [pick, setPick] = useState(firstPick)
 
   // console.log(players)
   // console.log(rounds)
+  // console.log(pick)
 
   return (
     <>
@@ -45,8 +40,11 @@ function App() {
         <h1>Players</h1>
         <PlayersList 
           players={players} 
-          draftingTeam={draftingTeam}
-          setDraftingTeam={setDraftingTeam}
+          setPlayers={setPlayers}
+          pick={pick}
+          setPick={setPick}
+          rounds={rounds}
+          setRounds={setRounds}
         />
       </section>
     </>
