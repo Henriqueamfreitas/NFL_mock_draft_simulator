@@ -1,10 +1,10 @@
 import { PlayerCard } from "./PlayerCard"
+import { StyledPlayerList } from "./style.js"
 
 export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlayers }) => {
-    // console.log(players)
 
     return (
-        <ul>
+        <StyledPlayerList>
             {
                 players.map(player => {
                     return (
@@ -21,6 +21,6 @@ export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlay
                     )
                 })
             }
-        </ul>
+        </StyledPlayerList>
     )
 }

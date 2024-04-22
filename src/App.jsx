@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { picks } from "./services/picks";
 import { prospects } from "./services/prospects";
-import { RoundList } from "./components/RoundList";
-import  { PlayersList } from "./components/PlayersList"
+import { HomePage } from "./pages/HomePage";
 
 function App() {
   const [players, setPlayers] = useState(prospects.prospects)
   const [rounds, setRounds] = useState(picks.rounds)
 
   const [draftedPlayer, setDraftedPlayer] = useState(null)
-  
+
   const firstPick = rounds[0].picks.filter(pick => pick.overall === 1)[0]
   const [pick, setPick] = useState(firstPick)
 
@@ -18,37 +17,16 @@ function App() {
   // console.log(pick)
 
   return (
-    <>
-      <section>
-        <h1>Rounds</h1>
-        {
-          rounds.map(round => {
-            return (
-              <RoundList 
-                key={round.id} 
-                players={players} 
-                round={round} 
-                pick={pick}
-                draftedPlayer={draftedPlayer} 
-                setDraftedPlayer={setDraftedPlayer} 
-              />
-            )
-          })
-        }
-      </section>
-
-      <section>
-        <h1>Players</h1>
-        <PlayersList 
-          players={players} 
-          setPlayers={setPlayers}
-          pick={pick}
-          setPick={setPick}
-          rounds={rounds}
-          setRounds={setRounds}
-        />
-      </section>
-    </>
+    <HomePage 
+      players={players}
+      setPlayers={setPlayers}
+      rounds={rounds}
+      setRounds={setRounds}
+      draftedPlayer={draftedPlayer}
+      setDraftedPlayer={setDraftedPlayer}
+      pick={pick}
+      setPick={setPick}
+    />
   );
 }
 

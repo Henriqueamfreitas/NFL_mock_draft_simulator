@@ -1,7 +1,9 @@
+import { StyledRoundCard } from "./style"
+
 export const RoundCard = ({ players, filteredPick, pick }) => {
     const player = () => {
         if(filteredPick.player_drafted){
-            return filteredPick.player_drafted.name
+            return `Player Drafted: ${filteredPick.player_drafted.name}`
         } else if(filteredPick === pick){
             return "On the clock"
         } else{
@@ -9,10 +11,13 @@ export const RoundCard = ({ players, filteredPick, pick }) => {
         }
     }
     return(
-        <li>
-            <h3>Pick: {filteredPick.overall}</h3>
-            <h3>{filteredPick.team.market} {filteredPick.team.name}</h3>
+        <StyledRoundCard>
+            <div>
+                <h3>Pick</h3>
+                <h3>{filteredPick.overall}</h3>
+            </div>
+            <p>{filteredPick.team.market} {filteredPick.team.name}</p>
             <p>{player()}</p>
-        </li>
+        </StyledRoundCard>
     )
 }

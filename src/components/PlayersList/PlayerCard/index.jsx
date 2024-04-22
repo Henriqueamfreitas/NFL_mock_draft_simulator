@@ -1,3 +1,5 @@
+import { StyledPlayerCard } from "./style.js"
+
 export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, setPlayers }) => {
     const draftPlayer = (player) => {
         let updatedRounds = [...rounds]
@@ -23,11 +25,13 @@ export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, 
     }
 
     return(
-        <li>
-            <h3>{player.name}</h3>
-            <h3>{player.position}</h3>
-            <h3>{player.team_name}</h3>
+        <StyledPlayerCard>
+            <div>
+                <h3>{player.name}</h3>
+                <h3>{player.position}</h3>
+            </div>
+            <p>{player.team_name}</p>
             <button onClick={() => draftPlayer(player)}>Draft Player</button>
-        </li>
+        </StyledPlayerCard>
     )
 }
