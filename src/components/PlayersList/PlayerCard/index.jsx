@@ -1,6 +1,6 @@
 import { StyledPlayerCard } from "./style.js"
 
-export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, setPlayers }) => {
+export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, setPlayers, setFormData }) => {
     const draftPlayer = (player) => {
         let updatedRounds = [...rounds]
         updatedRounds.map(round => {
@@ -22,6 +22,10 @@ export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, 
                 }
             }
         }
+        setFormData({
+            player: "",
+            position: "",
+        })
     }
 
     return(

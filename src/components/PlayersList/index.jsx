@@ -1,12 +1,14 @@
 import { PlayerCard } from "./PlayerCard"
 import { StyledPlayerList } from "./style.js"
 
-export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlayers }) => {
+export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlayers, searchPlayer, formData, setFormData }) => {
+    const list = formData.player === "" ? players : searchPlayer
 
     return (
+
         <StyledPlayerList>
             {
-                players.map(player => {
+                list.map(player => {
                     return (
                         <PlayerCard 
                             key={player.id} 
@@ -17,6 +19,7 @@ export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlay
                             setPick={setPick}
                             rounds={rounds}
                             setRounds={setRounds}
+                            setFormData={setFormData}
                         />
                     )
                 })
