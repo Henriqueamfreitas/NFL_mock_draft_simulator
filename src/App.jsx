@@ -28,6 +28,7 @@ function App() {
                 key={round.id} 
                 players={players} 
                 round={round} 
+                pick={pick}
                 draftedPlayer={draftedPlayer} 
                 setDraftedPlayer={setDraftedPlayer} 
               />

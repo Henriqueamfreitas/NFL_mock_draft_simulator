@@ -1,11 +1,18 @@
-export const RoundCard = ({ players, pick }) => {
-    const player = pick.player_drafted ? pick.player_drafted.name : null
-    
+export const RoundCard = ({ players, filteredPick, pick }) => {
+    const player = () => {
+        if(filteredPick.player_drafted){
+            return filteredPick.player_drafted.name
+        } else if(filteredPick === pick){
+            return "On the clock"
+        } else{
+            return "Upcoming"
+        }
+    }
     return(
         <li>
-            <h3>Pick: {pick.overall}</h3>
-            <h3>{pick.team.market} {pick.team.name}</h3>
-            <p>Player: {player}</p>
+            <h3>Pick: {filteredPick.overall}</h3>
+            <h3>{filteredPick.team.market} {filteredPick.team.name}</h3>
+            <p>{player()}</p>
         </li>
     )
 }

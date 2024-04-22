@@ -13,17 +13,13 @@ export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, 
         const updatedPlayers = players.filter(updatedPlayer => updatedPlayer !== player)        
         setPlayers(updatedPlayers)
         
-        console.log(rounds)
         for(let i=0; i<rounds.length; i+=1){
             for(let j=0; j<rounds[i].picks.length; j+=1){
                 if(rounds[i].picks[j] === pick){
-                    console.log((rounds[i].picks[j]))
                     setPick((rounds[i].picks[j+1]))
                 }
             }
         }
-        // console.log(pick)
-        // Preciso setar a próxima pick
     }
 
     return(
