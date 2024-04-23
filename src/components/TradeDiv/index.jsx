@@ -47,7 +47,6 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
     }
 
     const makeTrade = () => {
-        console.log(tradeData)
         let originalPickTeam 
         let tradingTeam 
 
@@ -98,6 +97,22 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         // originalTeamTradedPicks vai virar do tradingTeam
     }
 
+    let tradingTeamPlayers
+    let originalPickTeamPlayers
+
+    for(let i=0; i<teamInfo.length; i+=1){
+        if(teamInfo[i].name === tradeData.tradingTeam){
+            tradingTeamPlayers=(teamInfo[i].players)
+        }
+        
+        if(teamInfo[i].name === tradeData.originalPickTeam){
+            originalPickTeamPlayers=(teamInfo[i].players)   
+        }
+    }
+
+
+    // console.log(tradingTeamPlayers)
+    // console.log(originalPickTeamPlayers)
     return (
         <StyledTradeDiv>
             <div className="tradingTeams">
@@ -105,9 +120,11 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                     <h1>TEAM TO TRADE</h1>
                     <select value={tradeData.tradingTeam} onChange={(e) => setTradeData({ ...tradeData, tradingTeam: e.target.value })}>
                         <option value="">Select a team</option>
-                        {teamNames.map((team, index) => (
-                            <option key={index} value={team}>{team}</option>
-                        ))}
+                        {
+                            teamNames.map((team, index) => (
+                                <option key={index} value={team}>{team}</option>
+                            ))
+                        }
                     </select>
 
                     <div className="tradingTeams__trading--picks">
@@ -119,6 +136,21 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                                 )
                             })
                         }
+                    </div>
+
+                    <div>
+                        <select>
+                            <option value="">Select a player</option>
+                            {
+                                tradingTeamPlayers.length>0 ?
+                                tradingTeamPlayers.map((player, index) => {
+                                    return(
+                                        <option key={index} value={player.name}>{player.name}</option>
+                                    )
+                                }) :
+                                null
+                            }
+                        </select>
                     </div>
                 </div>
 
@@ -134,6 +166,21 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                                 )
                             })
                         }
+                    </div>
+
+                    <div>
+                        <select>
+                            <option value="">Select a player</option>
+                            {
+                                originalPickTeamPlayers.length>0 ?
+                                originalPickTeamPlayers.map((player, index) => {
+                                    return(
+                                        <option key={index} value={player.name}>{player.name}</option>
+                                    )
+                                }) :
+                                null
+                            }
+                        </select>
                     </div>
                 </div>
             </div>
