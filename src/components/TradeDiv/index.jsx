@@ -1,6 +1,6 @@
 import { StyledTradeDiv } from "./style"
 
-export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData, teamPicksArr, rounds }) => {
+export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData, teamPicksArr, rounds, setRounds }) => {
     let teamNames = []
     for (let i = 0; i < teamInfo.length; i += 1) {
         if (teamInfo[i].name !== pick.team.name) {
@@ -46,8 +46,58 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         }
     }
 
-    console.log(tradeData)
-    // FAZER SELECT DE POSIÇÕES DE CADA TIME
+    const makeTrade = () => {
+        console.log(tradeData)
+        let originalPickTeam 
+        let tradingTeam 
+
+        for(let i=0; i<rounds.length; i+=1){
+            for(let j=0; j<rounds[i].picks.length; j+=1){
+                if(rounds[i].picks[j].team.name === tradeData.originalPickTeam){
+                    originalPickTeam=rounds[i].picks[j].team
+                }
+                if(rounds[i].picks[j].team.name === tradeData.tradingTeam){
+                    tradingTeam=rounds[i].picks[j].team
+                }
+            }
+        }
+
+        const updatedRounds = [...rounds]
+        for(let k=0; k<tradeData.tradingTeamTradedPicks.length; k+=1){
+            for(let i=0; i<updatedRounds.length; i+=1){
+                for(let j=0; j<updatedRounds[i].picks.length; j+=1){
+                        if(updatedRounds[i].picks[j].overall === tradeData.tradingTeamTradedPicks[k]){
+                            updatedRounds[i].picks[j].team=originalPickTeam
+                        }
+                }
+            }
+        }
+
+        for(let k=0; k<tradeData.originalTeamTradedPicks.length; k+=1){
+            for(let i=0; i<updatedRounds.length; i+=1){
+                for(let j=0; j<updatedRounds[i].picks.length; j+=1){
+                        if(updatedRounds[i].picks[j].overall === tradeData.originalTeamTradedPicks[k]){
+                            updatedRounds[i].picks[j].team=tradingTeam
+                        }
+                }
+            }
+        }
+
+        setRounds(updatedRounds)
+
+        // fazer um for para as picks do trading que irão para o original
+        // dentro desse for, fazer um outro for com os rounds até achar o overall igual
+        // substituir o time
+
+        // fazer de novo do original para o trading
+        // console.log(rounds[0].picks[0].overall)
+        // console.log(rounds[0].picks[0].team)
+        // console.log(rounds[0].picks[0])
+        
+        // tradingTeamTradedPicks vai virar do originalTeam
+        // originalTeamTradedPicks vai virar do tradingTeam
+    }
+
     return (
         <StyledTradeDiv>
             <div className="tradingTeams">
@@ -88,7 +138,7 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                 </div>
             </div>
 
-            <button>Send Trade</button>
+            <button onClick={() => {makeTrade()}}>Send Trade</button>
         </StyledTradeDiv>
     )
 }
