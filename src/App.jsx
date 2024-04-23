@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { picks } from "./services/picks";
 import { prospects } from "./services/prospects";
+import { teams } from "./services/teams";
 import { HomePage } from "./pages/HomePage";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 
   const [page, setPage] = useState("draft")
 
+  // console.log(teams)
   // console.log(rounds)
   // console.log(pick)
 
