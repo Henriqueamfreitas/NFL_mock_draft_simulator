@@ -7,11 +7,20 @@ import { HomePage } from "./pages/HomePage";
 function App() {
   const [players, setPlayers] = useState(prospects.prospects)
   const [rounds, setRounds] = useState(picks.rounds)
-
+  
+  const [teamInfo, setTeamInfo] = useState(teams)
+  
   const [draftedPlayer, setDraftedPlayer] = useState(null)
-
+  
   const firstPick = rounds[0].picks.filter(pick => pick.overall === 1)[0]
   const [pick, setPick] = useState(firstPick)
+  
+  const [tradeData, setTradeData] = useState({
+    originalPickTeam: pick.team.name,
+    originalTeamTradedPicks: [],
+    tradingTeam: "",    
+    tradingTeamTradedPicks: [],
+  })
 
   const [searchPlayer, setSearchPlayer] = useState([])
   const [formData, setFormData] = useState({
@@ -41,6 +50,10 @@ function App() {
       setFormData={setFormData}
       page={page}
       setPage={setPage}
+      teamInfo={teamInfo}
+      setTeamInfo={setTeamInfo}
+      tradeData={tradeData}
+      setTradeData={setTradeData}
     />
   );
 }
