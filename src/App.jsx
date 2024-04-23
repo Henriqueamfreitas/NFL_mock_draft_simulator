@@ -18,6 +18,8 @@ function App() {
     position: "",
   })
 
+  const [page, setPage] = useState("draft")
+
   // console.log(rounds)
   // console.log(pick)
 
@@ -35,6 +37,8 @@ function App() {
       setSearchPlayer={setSearchPlayer}
       formData={formData}
       setFormData={setFormData}
+      page={page}
+      setPage={setPage}
     />
   );
 }

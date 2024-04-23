@@ -30,8 +30,6 @@ export const PlayersForm = ({ searchPlayer, setSearchPlayer, players, setPlayers
         })
     }
 
-    console.log(formData)
-
     return (
         <StyledPlayersForm onSubmit={submitForm}>
             <input 
