@@ -18,8 +18,6 @@ function App() {
     position: "",
   })
 
-
-  // console.log(players)
   // console.log(rounds)
   // console.log(pick)
 

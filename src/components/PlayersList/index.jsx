@@ -2,7 +2,7 @@ import { PlayerCard } from "./PlayerCard"
 import { StyledPlayerList } from "./style.js"
 
 export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlayers, searchPlayer, formData, setFormData }) => {
-    const list = formData.player === "" ? players : searchPlayer
+    const list = (formData.player === "" && formData.position === "") ? players : searchPlayer
 
     return (
 
