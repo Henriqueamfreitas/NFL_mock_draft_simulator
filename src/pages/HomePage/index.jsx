@@ -32,6 +32,7 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
                                 pick={pick}
                                 draftedPlayer={draftedPlayer}
                                 setDraftedPlayer={setDraftedPlayer}
+                                teamInfo={teamInfo}
                             />
                         )
                     })

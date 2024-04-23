@@ -1,7 +1,7 @@
 import { RoundCard } from "./RoundCard"
 import { StyledRoundList } from "./style.js"
 
-export const RoundList = ({ players, round, draftedPlayer, setDraftedPlayer, pick }) => {
+export const RoundList = ({ players, round, draftedPlayer, setDraftedPlayer, pick, teamInfo }) => {
     const picks = round.picks
 
     return(
@@ -16,7 +16,8 @@ export const RoundList = ({ players, round, draftedPlayer, setDraftedPlayer, pic
                             pick={pick}
                             filteredPick={filteredPick} 
                             draftedPlayer={draftedPlayer} 
-                            setDraftedPlayer={setDraftedPlayer} 
+                            setDraftedPlayer={setDraftedPlayer}
+                            teamInfo={teamInfo} 
                         />
                     )
                  })

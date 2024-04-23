@@ -35,6 +35,7 @@ export const teams = [
     // BEARS
     {
         "id": "7b112545-38e6-483c-a55c-96cf6ee49cb8",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/ijrplti0kmzsyoaikhv1",
         "name": "Bears",
         "market": "Chicago",
         "alias": "CHI",
@@ -2134,6 +2135,7 @@ export const teams = [
     // COMMANDERS
     {
         "id": "22052ff7-c065-42ee-bc8f-c4691c50e624",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/xymxwrxtyj9fhaemhdyd",
         "name": "Commanders",
         "market": "Washington",
         "alias": "WAS",
@@ -4581,6 +4583,7 @@ export const teams = [
     // PATRIOTS
     {
         "id": "97354895-8c77-4fd4-a860-32e62ea7382a",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/moyfxx3dq5pio4aiftnc", 
         "name": "Patriots",
         "market": "New England",
         "alias": "NE",
@@ -6905,6 +6908,7 @@ export const teams = [
     // CARDINALS
     {
         "id": "de760528-1dc0-416a-a978-b510d20692ff",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/u9fltoslqdsyao8cpm0k",
         "name": "Cardinals",
         "market": "Arizona",
         "alias": "ARI",
@@ -9260,6 +9264,7 @@ export const teams = [
     // CHARGERS
     {
         "id": "1f6dcffb-9823-43cd-9ff4-e7a8466749b5",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/dhfidtn8jrumakbogeu4",
         "name": "Chargers",
         "market": "Los Angeles",
         "alias": "LAC",
@@ -11343,6 +11348,7 @@ export const teams = [
     // GIANTS
     {
         "id": "04aa1c9d-66da-489d-b16a-1dee3f2eec4d",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/t6mhdmgizi6qhndh8b9p",
         "name": "Giants",
         "market": "New York",
         "alias": "NYG",
@@ -13907,6 +13913,7 @@ export const teams = [
     // TITANS
     {
         "id": "d26a1ca5-722d-4274-8f97-c92e49c96315",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/pln44vuzugjgipyidsre",
         "name": "Titans",
         "market": "Tennessee",
         "alias": "TEN",
@@ -16254,6 +16261,7 @@ export const teams = [
     // FALCONS
     {
         "id": "e6aa13a4-0055-48a9-bc41-be28dc106929",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/d8m7hzpsbrl6pnqht8op",
         "name": "Falcons",
         "market": "Atlanta",
         "alias": "ATL",
@@ -18575,6 +18583,7 @@ export const teams = [
     // JETS
     {
         "id": "5fee86ae-74ab-4bdd-8416-42a9dd9964f3",
+        "img": "https://static.www.nfl.com/image/upload/f_auto/league/vdqo4iiufmdrimkaxslj",   
         "name": "Jets",
         "market": "New York",
         "alias": "NYJ",
@@ -20952,6 +20961,7 @@ export const teams = [
     // VIKINGS
     {
         "id": "33405046-04ee-4058-a950-d606f8c30852",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/teguylrnqqmfcwxvcmmz",
         "name": "Vikings",
         "market": "Minnesota",
         "alias": "MIN",
@@ -23205,6 +23215,7 @@ export const teams = [
     // BRONCOS
     {
         "id": "ce92bd47-93d5-4fe9-ada4-0fc681e6caa0",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/t0p7m5cjdjy18rnzzqbx",
         "name": "Broncos",
         "market": "Denver",
         "alias": "DEN",
@@ -25506,6 +25517,7 @@ export const teams = [
     // RAIDERS
     {
         "id": "7d4fcc64-9cb5-4d1b-8e75-8a906d1e1576",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/gzcojbzcyjgubgyb6xf2",
         "name": "Raiders",
         "market": "Las Vegas",
         "alias": "LV",
@@ -27457,6 +27469,7 @@ export const teams = [
     // SAINTS
     {
         "id": "0d855753-ea21-4953-89f9-0e20aff9eb73",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/grhjkahghjkk17v43hdx",
         "name": "Saints",
         "market": "New Orleans",
         "alias": "NO",
@@ -29729,6 +29742,7 @@ export const teams = [
     // COLTS
     {
         "id": "82cf9565-6eb9-4f01-bdbd-5aa0d472fcd9",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/ketwqeuschqzjsllbid5",
         "name": "Colts",
         "market": "Indianapolis",
         "alias": "IND",
@@ -32137,6 +32151,7 @@ export const teams = [
     // SEAHAWKS
     {
         "id": "3d08af9e-c767-4f88-a7dc-b920c6d2b4a8",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/gcytzwpjdzbpwnwxincg",
         "name": "Seahawks",
         "market": "Seattle",
         "alias": "SEA",
@@ -34186,6 +34201,7 @@ export const teams = [
     // JAGUARS
     {
         "id": "f7ddd7fa-0bae-4f90-bc8e-669e4d6cf2de",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/qycbib6ivrm9dqaexryk",
         "name": "Jaguars",
         "market": "Jacksonville",
         "alias": "JAC",
@@ -36509,6 +36525,7 @@ export const teams = [
     // BENGALS
     {
         "id": "ad4ae08f-d808-42d5-a1e6-e9bc4e34d123",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/okxpteoliyayufypqalq",
         "name": "Bengals",
         "market": "Cincinnati",
         "alias": "CIN",
@@ -38643,6 +38660,7 @@ export const teams = [
     // RAMS
     {
         "id": "2eff2a03-54d4-46ba-890e-2bc3925548f3",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/ayvwcmluj2ohkdlbiegi",
         "name": "Rams",
         "market": "Los Angeles",
         "alias": "LA",
@@ -40683,6 +40701,7 @@ export const teams = [
     // SETEELERS
     {
         "id": "cb2f9f1f-ac67-424e-9e72-1475cb0ed398",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/xujg9t3t4u5nmjgr54wx",
         "name": "Steelers",
         "market": "Pittsburgh",
         "alias": "PIT",
@@ -43007,6 +43026,7 @@ export const teams = [
     // DOLPHINS
     {
         "id": "4809ecb0-abd3-451d-9c4a-92a90b83ca06",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/lits6p8ycthy9to70bnt",        
         "name": "Dolphins",
         "market": "Miami",
         "alias": "MIA",
@@ -45336,6 +45356,7 @@ export const teams = [
     // EAGLES
     {
         "id": "386bdbf9-9eea-4869-bb9a-274b0bc66e80",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/puhrqgj71gobgdkdo6uq",
         "name": "Eagles",
         "market": "Philadelphia",
         "alias": "PHI",
@@ -47916,6 +47937,7 @@ export const teams = [
     // COWBOYS
     {
         "id": "e627eec7-bbae-4fa4-8e73-8e1d6bc5c060",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/ieid8hoygzdlmzo0tnf6",
         "name": "Cowboys",
         "market": "Dallas",
         "alias": "DAL",
@@ -49909,6 +49931,7 @@ export const teams = [
     // PACKERS
     {
         "id": "a20471b4-a8d9-40c7-95ad-90cc30e46932",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/gppfvr7n8gljgjaqux2x",
         "name": "Packers",
         "market": "Green Bay",
         "alias": "GB",
@@ -51976,6 +51999,7 @@ export const teams = [
     // BUCCANEERS
     {
         "id": "4254d319-1bc7-4f81-b4ab-b5e6f3402b69",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/v8uqiualryypwqgvwcih",
         "name": "Buccaneers",
         "market": "Tampa Bay",
         "alias": "TB",
@@ -53990,6 +54014,7 @@ export const teams = [
     // BILLS
     {
         "id": "768c92aa-75ff-4a43-bcc0-f2798c2e1724",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/giphcy6ie9mxbnldntsf",
         "name": "Bills",
         "market": "Buffalo",
         "alias": "BUF",
@@ -56004,6 +56029,7 @@ export const teams = [
     // LIONS
     {
         "id": "c5a59daa-53a7-4de0-851f-fb12be893e9e",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/ocvxwnapdvwevupe4tpr",
         "name": "Lions",
         "market": "Detroit",
         "alias": "DET",
@@ -58106,6 +58132,7 @@ export const teams = [
     // RAVENS
     {
         "id": "ebd87119-b331-4469-9ea6-d51fe3ce2f1c",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/ucsdijmddsqcj1i9tddd",
         "name": "Ravens",
         "market": "Baltimore",
         "alias": "BAL",
@@ -59895,6 +59922,7 @@ export const teams = [
     // 49ERS
     {
         "id": "f0e724b0-4cbf-495a-be47-013907608da9",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/dxibuyxbk0b9ua5ih9hn",
         "name": "49ers",
         "market": "San Francisco",
         "alias": "SF",
@@ -62322,6 +62350,7 @@ export const teams = [
     // CHIEFS
     {
         "id": "6680d28d-d4d2-49f6-aace-5292d3ec02c2",
+        "img": "https://res.cloudinary.com/nflleague/image/private/f_auto/league/ujshjqvmnxce8m4obmvs",
         "name": "Chiefs",
         "market": "Kansas City",
         "alias": "KC",
@@ -64794,6 +64823,7 @@ export const teams = [
     // PANTHERS
     {
         "id": "f14bf5cc-9a82-4a38-bc15-d39f75ed5314",
+        "img": "https://static.www.nfl.com/image/private/f_auto/league/ervfzgrqdpnc7lh5gqwq",
         "name": "Panthers",
         "market": "Carolina",
         "alias": "CAR",
@@ -67007,6 +67037,7 @@ export const teams = [
     // TEXANS
     {
         "id": "82d2d380-3834-4938-835f-aec541e5ece7",
+        "img": "https://static.www.nfl.com/image/upload/f_auto/league/u6camnphqvjc6mku6u3c",
         "name": "Texans",
         "market": "Houston",
         "alias": "HOU",
@@ -69472,6 +69503,7 @@ export const teams = [
     // BROWNS
     {
         "id": "d5a2eb42-8065-4174-ab79-0a6fa820e35e",
+        "img": "https://static.www.nfl.com/image/upload/f_auto/league/bedyixmmjhszfcx5wv2l",
         "name": "Browns",
         "market": "Cleveland",
         "alias": "CLE",

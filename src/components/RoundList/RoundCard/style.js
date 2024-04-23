@@ -8,6 +8,10 @@ export const StyledRoundCard = styled.li`
     height: 50px;
     padding: 1rem;
     align-items: center;
+    img{
+        width: 45px;
+        height: 45px;
+    }
     div{
         width: fit-content;
         display: flex;
