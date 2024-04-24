@@ -23,8 +23,7 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
     for (let i = 0; i < rounds.length; i += 1) {
         for (let j = 0; j < rounds[i].picks.length; j += 1) {
             if (rounds[i].picks[j].team.name === tradeData.tradingTeam) {
-                // console.log(pick.overall)
-                if(rounds[i].picks[j].overall<=pick.overall){
+                if(rounds[i].picks[j].overall>=pick.overall){
                     tradingTeamPicksArr.push((rounds[i].picks[j].overall))
                 }
             }
@@ -105,22 +104,20 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         }
         setTradeData(resetTradeData)
     }
-    // console.log(pick.team.name)
     let tradingTeamPlayers=[]
     let originalPickTeamPlayers
 
     for(let i=0; i<teamInfo.length; i+=1){
         if(teamInfo[i].name === tradeData.tradingTeam){
             tradingTeamPlayers=(teamInfo[i].players)
-            // console.log(tradingTeamPlayers)
         }
         
         if(teamInfo[i].name === tradeData.originalPickTeam){
             originalPickTeamPlayers=(teamInfo[i].players)
-            // console.log(originalPickTeamPlayers)
         }
     }
-    // COLOCAR EM ORDEM ALFABÉTICA
+    tradingTeamPlayers.sort((a, b) => a.name.localeCompare(b.name));
+    originalPickTeamPlayers.sort((a, b) => a.name.localeCompare(b.name));
 
     return (
         <StyledTradeDiv>
