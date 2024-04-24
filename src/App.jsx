@@ -16,11 +16,15 @@ function App() {
   const [pick, setPick] = useState(firstPick)
   
   const [tradeData, setTradeData] = useState({
-    originalPickTeam: pick.team.name,
+    originalPickTeam: "",
     originalTeamTradedPicks: [],
     tradingTeam: "",    
     tradingTeamTradedPicks: [],
   })
+
+  // console.log(tradeData.originalPickTeam)
+
+  // console.log(tradeData.originalPickTeam)
 
   const [searchPlayer, setSearchPlayer] = useState([])
   const [formData, setFormData] = useState({

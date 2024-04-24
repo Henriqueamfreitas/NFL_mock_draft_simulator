@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { StyledTradeDiv } from "./style"
 
 export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData, teamPicksArr, rounds, setRounds }) => {
@@ -8,6 +9,15 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         }
     }
     teamNames.sort()
+
+    useState(() => {
+        setTradeData({
+            originalPickTeam: pick.team.name,
+            originalTeamTradedPicks: [],
+            tradingTeam: "",    
+            tradingTeamTradedPicks: [],
+        })
+    }, rounds)
 
     let tradingTeamPicksArr = []
     for (let i = 0; i < rounds.length; i += 1) {
@@ -47,6 +57,7 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
     }
 
     const makeTrade = () => {
+
         let originalPickTeam 
         let tradingTeam 
 
@@ -61,7 +72,7 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
             }
         }
 
-        const updatedRounds = [...rounds]
+        let updatedRounds = [...rounds]
         for(let k=0; k<tradeData.tradingTeamTradedPicks.length; k+=1){
             for(let i=0; i<updatedRounds.length; i+=1){
                 for(let j=0; j<updatedRounds[i].picks.length; j+=1){
@@ -83,36 +94,31 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         }
 
         setRounds(updatedRounds)
-
-        // fazer um for para as picks do trading que irão para o original
-        // dentro desse for, fazer um outro for com os rounds até achar o overall igual
-        // substituir o time
-
-        // fazer de novo do original para o trading
-        // console.log(rounds[0].picks[0].overall)
-        // console.log(rounds[0].picks[0].team)
-        // console.log(rounds[0].picks[0])
-        
-        // tradingTeamTradedPicks vai virar do originalTeam
-        // originalTeamTradedPicks vai virar do tradingTeam
+        let resetTradeData = {
+            originalPickTeam: tradeData.originalPickTeam,
+            originalTeamTradedPicks: [],
+            tradingTeam: "",    
+            tradingTeamTradedPicks: [],
+        }
+        setTradeData(resetTradeData)
     }
-
-    let tradingTeamPlayers
+    // console.log(pick.team.name)
+    let tradingTeamPlayers=[]
     let originalPickTeamPlayers
 
     for(let i=0; i<teamInfo.length; i+=1){
         if(teamInfo[i].name === tradeData.tradingTeam){
             tradingTeamPlayers=(teamInfo[i].players)
+            // console.log(tradingTeamPlayers)
         }
         
         if(teamInfo[i].name === tradeData.originalPickTeam){
-            originalPickTeamPlayers=(teamInfo[i].players)   
+            originalPickTeamPlayers=(teamInfo[i].players)
+            // console.log(originalPickTeamPlayers)
         }
     }
+    // COLOCAR EM ORDEM ALFABÉTICA
 
-
-    // console.log(tradingTeamPlayers)
-    // console.log(originalPickTeamPlayers)
     return (
         <StyledTradeDiv>
             <div className="tradingTeams">
@@ -142,6 +148,7 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                         <select>
                             <option value="">Select a player</option>
                             {
+                                // console.log(tradingTeamPlayers)
                                 tradingTeamPlayers.length>0 ?
                                 tradingTeamPlayers.map((player, index) => {
                                     return(
@@ -172,12 +179,13 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                         <select>
                             <option value="">Select a player</option>
                             {
-                                originalPickTeamPlayers.length>0 ?
+                                originalPickTeamPlayers?.length>0 ?
                                 originalPickTeamPlayers.map((player, index) => {
                                     return(
                                         <option key={index} value={player.name}>{player.name}</option>
                                     )
-                                }) :
+                                }) 
+                                :
                                 null
                             }
                         </select>

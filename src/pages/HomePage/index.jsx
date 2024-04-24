@@ -9,7 +9,7 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
     let teamPicksArr = []
     for(let i=0; i<rounds.length; i+=1){
         for(let j=0; j<rounds[i].picks.length; j+=1){
-            if(rounds[i].picks[j].team.name === pick.team.name){
+            if(rounds[i].picks[j].team.name === pick?.team.name){
                 teamPicksString+=`${(rounds[i].picks[j].overall)}, `
                 teamPicksArr.push((rounds[i].picks[j].overall))
             }
@@ -53,7 +53,7 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
 
                 {
                     page === "draft" ?
-                    <div>
+                    <div className="draftFilters">
                         <PlayersForm
                             searchPlayer={searchPlayer}
                             setSearchPlayer={setSearchPlayer}

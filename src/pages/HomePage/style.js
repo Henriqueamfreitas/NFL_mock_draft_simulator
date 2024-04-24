@@ -10,4 +10,9 @@ export const StyledHomePage = styled.main`
         flex-direction: column;
         align-items: center;
     }
+
+    .draftFilters{
+        position: fixed;
+        top: 120px;
+    }
 `
