@@ -19,9 +19,19 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
     teamPicksString = teamPicksString.slice(0, -1);
     teamPicksString = teamPicksString.slice(0, -1);
 
+    const restartDraft = () => {
+        localStorage.removeItem("@rounds")
+        localStorage.removeItem("@players")
+        localStorage.removeItem("@pick")
+        window.location.reload()
+    }
+
     return (
         <StyledHomePage>
             <section>
+            <button onClick={restartDraft}>
+                Restart Draft
+            </button>
                 {
                     rounds.map(round => {
                         return (
