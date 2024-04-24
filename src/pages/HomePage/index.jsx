@@ -7,11 +7,14 @@ import { TradeDiv } from "../../components/TradeDiv"
 export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer, setDraftedPlayer, pick, setPick, searchPlayer, setSearchPlayer, formData, setFormData, page, setPage, teamInfo, setTeamInfo, tradeData, setTradeData }) => {
     let teamPicksString = ""
     let teamPicksArr = []
+    console.log(pick)
     for(let i=0; i<rounds.length; i+=1){
         for(let j=0; j<rounds[i].picks.length; j+=1){
             if(rounds[i].picks[j].team.name === pick?.team.name){
                 teamPicksString+=`${(rounds[i].picks[j].overall)}, `
-                teamPicksArr.push((rounds[i].picks[j].overall))
+                if(rounds[i].picks[j].overall>=pick.overall){
+                    teamPicksArr.push((rounds[i].picks[j].overall))
+                }
             }
         }
     }

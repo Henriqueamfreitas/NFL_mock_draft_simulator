@@ -23,7 +23,10 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
     for (let i = 0; i < rounds.length; i += 1) {
         for (let j = 0; j < rounds[i].picks.length; j += 1) {
             if (rounds[i].picks[j].team.name === tradeData.tradingTeam) {
-                tradingTeamPicksArr.push((rounds[i].picks[j].overall))
+                // console.log(pick.overall)
+                if(rounds[i].picks[j].overall<=pick.overall){
+                    tradingTeamPicksArr.push((rounds[i].picks[j].overall))
+                }
             }
         }
     }
