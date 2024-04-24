@@ -13,15 +13,9 @@ function App() {
   const [players, setPlayers] = useState(LsPlayers ? LsPlayers : prospects.prospects)
   
   const firstPick = rounds[0].picks.filter(pick => pick.overall === 1)[0]
-  // console.log(firstPick)
-  // console.log(LsPick)
-  
-  
-
 
   const [pick, setPick] = useState(LsPick ? LsPick : firstPick)
 
-  // console.log("app:", pick)
   useEffect(() => {
     localStorage.setItem("@rounds", JSON.stringify(rounds))
   }, [rounds])
@@ -42,13 +36,11 @@ function App() {
   const [tradeData, setTradeData] = useState({
     originalPickTeam: "",
     originalTeamTradedPicks: [],
+    originalTeamTradedPlayers: [],
     tradingTeam: "",    
     tradingTeamTradedPicks: [],
+    tradingTeamTradedPlayers: [],
   })
-
-  // console.log(tradeData.originalPickTeam)
-
-  // console.log(tradeData.originalPickTeam)
 
   const [searchPlayer, setSearchPlayer] = useState([])
   const [formData, setFormData] = useState({
@@ -57,6 +49,9 @@ function App() {
   })
 
   const [page, setPage] = useState("draft")
+
+  const [originalTeamTradedPlayer, setOriginalTeamTradedPlayer] = useState(null)
+  const [tradingTeamTradedPlayer, setTradingTeamTradedPlayer] = useState(null)
 
   // console.log(teams)
   // console.log(rounds)
@@ -82,6 +77,10 @@ function App() {
       setTeamInfo={setTeamInfo}
       tradeData={tradeData}
       setTradeData={setTradeData}
+      originalTeamTradedPlayer={originalTeamTradedPlayer}
+      setOriginalTeamTradedPlayer={setOriginalTeamTradedPlayer}
+      tradingTeamTradedPlayer={tradingTeamTradedPlayer}
+      setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}
     />
   );
 }

@@ -4,10 +4,10 @@ import { PlayersForm } from "../../components/PlayersList/PlayersForm"
 import { StyledHomePage } from "./style"
 import { TradeDiv } from "../../components/TradeDiv"
 
-export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer, setDraftedPlayer, pick, setPick, searchPlayer, setSearchPlayer, formData, setFormData, page, setPage, teamInfo, setTeamInfo, tradeData, setTradeData }) => {
+export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer, setDraftedPlayer, pick, setPick, searchPlayer, setSearchPlayer, formData, setFormData, page, setPage, teamInfo, setTeamInfo, tradeData, setTradeData, originalTeamTradedPlayer, setOriginalTeamTradedPlayer, tradingTeamTradedPlayer, setTradingTeamTradedPlayer }) => {
     let teamPicksString = ""
     let teamPicksArr = []
-    console.log(pick)
+
     for(let i=0; i<rounds.length; i+=1){
         for(let j=0; j<rounds[i].picks.length; j+=1){
             if(rounds[i].picks[j].team.name === pick?.team.name){
@@ -102,6 +102,10 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
                         tradeData={tradeData}
                         setTradeData={setTradeData}
                         teamPicksArr={teamPicksArr}
+                        originalTeamTradedPlayer={originalTeamTradedPlayer}
+                        setOriginalTeamTradedPlayer={setOriginalTeamTradedPlayer}
+                        tradingTeamTradedPlayer={tradingTeamTradedPlayer}
+                        setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}                  
                     />
                 }
             </section>

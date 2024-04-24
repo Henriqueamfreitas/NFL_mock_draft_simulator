@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { StyledTradeDiv } from "./style"
 
-export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData, teamPicksArr, rounds, setRounds }) => {
+export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData, teamPicksArr, rounds, setRounds, originalTeamTradedPlayer, setOriginalTeamTradedPlayer, tradingTeamTradedPlayer, setTradingTeamTradedPlayer }) => {
+
     let teamNames = []
     for (let i = 0; i < teamInfo.length; i += 1) {
         if (teamInfo[i].name !== pick.team.name) {
@@ -58,8 +59,10 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         }
     }
 
-    const makeTrade = () => {
+    // console.log(tradingTeamTradedPlayer)
 
+
+    const makeTrade = () => {
         let originalPickTeam 
         let tradingTeam 
 
@@ -95,12 +98,43 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
             }
         }
 
+        let updatedTeamInfo = [...teamInfo]
+        // Tiramos o jogador do tradingTeam
+        // PRECISAMOS colocar o jogador do originalPickteam no trading team
+
+        // Tiramos tirar o jogador do originalPickTeam
+        // PRECISAMOS colocar o jogador do tradingTeam no originalPickteam
+
+        for(let i=0; i<updatedTeamInfo.length; i+=1){
+
+            if(updatedTeamInfo[i].name === tradeData.tradingTeam){
+                for(let j=0; j<updatedTeamInfo[i].players.length; j+=1){
+                    if(updatedTeamInfo[i].players[j].id === tradingTeamTradedPlayer){
+                        const playerToTrade = updatedTeamInfo[i].players.splice(j, 1)[0];
+                        updatedTeamInfo.find(team => team.name === tradeData.originalPickTeam).players.push(playerToTrade);        
+                    }
+                }
+            }                
+
+            if(updatedTeamInfo[i].name === tradeData.originalPickTeam){
+                for(let j=0; j<updatedTeamInfo[i].players.length; j+=1){
+                    if(updatedTeamInfo[i].players[j].id === originalTeamTradedPlayer){
+                        const playerToTrade = updatedTeamInfo[i].players.splice(j, 1)[0];
+                        updatedTeamInfo.find(team => team.name === tradeData.tradingTeam).players.push(playerToTrade);   
+                    }
+                }
+            }        
+        }
+
+        console.log(updatedTeamInfo)
         setRounds(updatedRounds)
         let resetTradeData = {
             originalPickTeam: tradeData.originalPickTeam,
             originalTeamTradedPicks: [],
+            originalTeamTradedPlayers: [],
             tradingTeam: "",    
             tradingTeamTradedPicks: [],
+            tradingTeamTradedPlayers: [],
         }
         setTradeData(resetTradeData)
     }
@@ -145,14 +179,13 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                     </div>
 
                     <div>
-                        <select>
+                        <select onChange={(e) => setTradingTeamTradedPlayer(e.target.value)}>
                             <option value="">Select a player</option>
                             {
-                                // console.log(tradingTeamPlayers)
                                 tradingTeamPlayers.length>0 ?
                                 tradingTeamPlayers.map((player, index) => {
                                     return(
-                                        <option key={index} value={player.name}>{player.name}</option>
+                                        <option key={index} value={player.id}>{player.name}</option>
                                     )
                                 }) :
                                 null
@@ -176,13 +209,13 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                     </div>
 
                     <div>
-                        <select>
+                        <select onChange={(e) => setOriginalTeamTradedPlayer(e.target.value)}>
                             <option value="">Select a player</option>
                             {
                                 originalPickTeamPlayers?.length>0 ?
                                 originalPickTeamPlayers.map((player, index) => {
                                     return(
-                                        <option key={index} value={player.name}>{player.name}</option>
+                                        <option key={index} value={player?.id}>{player?.name}</option>
                                     )
                                 }) 
                                 :
