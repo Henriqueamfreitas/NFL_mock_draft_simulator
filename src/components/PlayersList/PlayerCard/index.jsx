@@ -5,7 +5,7 @@ export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, 
         let updatedRounds = [...rounds]
         updatedRounds.map(round => {
             round.picks.map(filteredPick => {
-                if(filteredPick === pick){
+                if(filteredPick.overall === pick.overall){
                     filteredPick["player_drafted"] = player
                 }
             })

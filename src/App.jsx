@@ -1,19 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { picks } from "./services/picks";
 import { prospects } from "./services/prospects";
 import { teams } from "./services/teams";
 import { HomePage } from "./pages/HomePage";
 
 function App() {
-  const [players, setPlayers] = useState(prospects.prospects)
-  const [rounds, setRounds] = useState(picks.rounds)
+  const LsRounds = JSON.parse(localStorage.getItem("@rounds"))
+  const LsPlayers = JSON.parse(localStorage.getItem("@players"))
+  const LsPick = JSON.parse(localStorage.getItem("@pick"))
   
+  const [rounds, setRounds] = useState(LsRounds ? LsRounds : picks.rounds)
+  const [players, setPlayers] = useState(LsPlayers ? LsPlayers : prospects.prospects)
+  
+  const firstPick = rounds[0].picks.filter(pick => pick.overall === 1)[0]
+  // console.log(firstPick)
+  // console.log(LsPick)
+  
+  
+
+
+  const [pick, setPick] = useState(LsPick ? LsPick : firstPick)
+
+  // console.log("app:", pick)
+  useEffect(() => {
+    localStorage.setItem("@rounds", JSON.stringify(rounds))
+  }, [rounds])
+  
+  useEffect(() => {
+    localStorage.setItem("@players", JSON.stringify(players))
+  }, [players])
+  
+  useEffect(() => {
+    localStorage.setItem("@pick", JSON.stringify(pick))
+  }, [rounds])
+
   const [teamInfo, setTeamInfo] = useState(teams)
   
   const [draftedPlayer, setDraftedPlayer] = useState(null)
   
-  const firstPick = rounds[0].picks.filter(pick => pick.overall === 1)[0]
-  const [pick, setPick] = useState(firstPick)
   
   const [tradeData, setTradeData] = useState({
     originalPickTeam: "",

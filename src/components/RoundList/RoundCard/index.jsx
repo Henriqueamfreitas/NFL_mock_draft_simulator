@@ -1,7 +1,6 @@
 import { StyledRoundCard } from "./style"
 
 export const RoundCard = ({ players, filteredPick, pick, teamInfo }) => {
-    console.log(filteredPick.player_drafted)
     const player = () => {
         if(filteredPick.player_drafted){
             return (
@@ -11,7 +10,7 @@ export const RoundCard = ({ players, filteredPick, pick, teamInfo }) => {
                     <span>{filteredPick.player_drafted.team_name}</span>
                 </div>
             )
-        } else if(filteredPick === pick){
+        } else if(filteredPick.overall === pick.overall){
             return <p>On the clock</p> 
         } else{
             return <p>Upcoming</p> 
