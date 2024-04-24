@@ -1,13 +1,20 @@
 import { StyledRoundCard } from "./style"
 
 export const RoundCard = ({ players, filteredPick, pick, teamInfo }) => {
+    console.log(filteredPick.player_drafted)
     const player = () => {
         if(filteredPick.player_drafted){
-            return `Player Drafted: ${filteredPick.player_drafted.name}`
+            return (
+                <div>
+                    <span>{filteredPick.player_drafted.name}</span>
+                    <span>{filteredPick.player_drafted.position}</span>
+                    <span>{filteredPick.player_drafted.team_name}</span>
+                </div>
+            )
         } else if(filteredPick === pick){
-            return "On the clock"
+            return <p>On the clock</p> 
         } else{
-            return "Upcoming"
+            return <p>Upcoming</p> 
         }
     }
 
@@ -24,8 +31,10 @@ export const RoundCard = ({ players, filteredPick, pick, teamInfo }) => {
                 <h3>{filteredPick.overall}</h3>
             </div>
             <img src={imgSrc} alt="" />
-            {/* <p>{filteredPick.team.market} {filteredPick.team.name}</p> */}
-            <p>{player()}</p>
+            {/* <p>{player()}</p> */}
+            {
+                player()
+            }
         </StyledRoundCard>
     )
 }
