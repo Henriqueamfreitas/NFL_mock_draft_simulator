@@ -41,8 +41,8 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
 
             <section>
                 <div>
-                    <h1>Overall: {pick.overall}</h1>
-                    <h1>{pick.team.market} {pick.team.name}</h1>
+                    <h1>Overall: {pick?.overall}</h1>
+                    <h1>{pick?.team.market} {pick?.team.name}</h1>
                     <h1>{teamPicksString}</h1>
                 </div>
 

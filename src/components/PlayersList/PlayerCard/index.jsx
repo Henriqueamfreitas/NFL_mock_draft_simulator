@@ -18,7 +18,11 @@ export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, 
         for(let i=0; i<rounds.length; i+=1){
             for(let j=0; j<rounds[i].picks.length; j+=1){
                 if(rounds[i].picks[j] === pick){
-                    setPick((rounds[i].picks[j+1]))
+                    if((rounds[i].picks[j+1])){
+                        setPick((rounds[i].picks[j+1]))
+                    } else{
+                        setPick((rounds[i+1].picks[0]))
+                    }
                 }
             }
         }
