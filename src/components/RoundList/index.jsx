@@ -5,7 +5,7 @@ export const RoundList = ({ players, round, draftedPlayer, setDraftedPlayer, pic
     const picks = round.picks
 
     return(
-        <StyledRoundList>    
+        <StyledRoundList className="roundList">    
             <h2>Round {round.number}</h2>
             {
                 picks.map(filteredPick => {
