@@ -4,7 +4,6 @@ import { StyledPlayerList } from "./style.js"
 export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlayers, searchPlayer, formData, setFormData, viewPlayerInfo, setViewPlayerInfo, isPlayerInfoModalOpen, setIsPlayerInfoModalOpen }) => {
     const list = (formData.player === "" && formData.position === "") ? players : searchPlayer
     return (
-
         <StyledPlayerList>
             {
                 list.map(player => {
