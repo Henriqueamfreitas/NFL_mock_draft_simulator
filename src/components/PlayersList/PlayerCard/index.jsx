@@ -1,5 +1,6 @@
 import { StyledPlayerCard } from "./style.js"
-import { useNavigate  } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { StyledH3, StyledSpan } from "../../../styles/typography.js";
 
 export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, setPlayers, setFormData, viewPlayerInfo, setViewPlayerInfo, isPlayerInfoModalOpen, setIsPlayerInfoModalOpen }) => {
     const navigate = useNavigate();
@@ -30,31 +31,37 @@ export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, 
                     else {
                         alert("The draft is over")
                         navigate("/summary")
-                        // return <Redirect to="/summary" />
-                        // <Link to="/"></Link>
                     }
                 }
             }
         }
-setFormData({
-    player: "",
-    position: "",
-})
+        setFormData({
+            player: "",
+            position: "",
+        })
     }
 
-const showPlayerInfoModal = () => {
-    setViewPlayerInfo(player)
-    setIsPlayerInfoModalOpen(true)
-}
+    const showPlayerInfoModal = () => {
+        setViewPlayerInfo(player)
+        setIsPlayerInfoModalOpen(true)
+    }
 
-return (
-    <StyledPlayerCard>
-        <div onClick={showPlayerInfoModal}>
-            <h3>{player.name}</h3>
-            <h3>{player.position}</h3>
-        </div>
-        <p>{player.team_name}</p>
-        <button onClick={() => draftPlayer(player)}>Draft Player</button>
-    </StyledPlayerCard>
-)
+    return (
+        <StyledPlayerCard>
+            <div onClick={showPlayerInfoModal}>
+                <StyledH3 fontcolor="black" fontSize="14" fontWeigth="500" >
+                    {player.name}
+                </StyledH3>
+                <div>
+                    <StyledSpan fontcolor="black" fontSize="14" fontWeigth="400" >
+                        {player.position}
+                    </StyledSpan>
+                    <StyledSpan fontcolor="black" fontSize="14" fontWeigth="400" >
+                        {player.team_name}
+                    </StyledSpan>
+                </div>
+            </div>
+            <button onClick={() => draftPlayer(player)}>Draft Player</button>
+        </StyledPlayerCard>
+    )
 }

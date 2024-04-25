@@ -9,4 +9,12 @@ export const StyledPlayersForm = styled.form`
     flex-wrap: wrap;
     gap: .25rem;
     row-gap: .5rem;
+
+    select{
+        color: black;
+    }
+
+    border-bottom-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    margin-bottom: 1rem;
 `

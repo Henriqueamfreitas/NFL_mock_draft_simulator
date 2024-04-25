@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const StyledHomePage = styled.main`
     background-color: rgb(30,30,30);
     padding: 2vh 8vw;
+    height: 100vh;
+    /* width: 100%; */
 
     h1{
         text-align: center;
@@ -33,14 +35,15 @@ export const StyledHomePage = styled.main`
             border: solid 2px #FFFFFF;
             margin-bottom: .5rem;
         }
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
     .rounds{
         height: 175px;
         overflow-x: scroll;
         max-height: 175px;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
+
     }
 
     .teamDraftingInfo{

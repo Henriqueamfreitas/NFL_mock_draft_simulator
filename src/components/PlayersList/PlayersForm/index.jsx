@@ -62,7 +62,6 @@ export const PlayersForm = ({ searchPlayer, setSearchPlayer, players, setPlayers
                 <option value="P">P</option>
                 <option value="LS">LS</option>
             </select>
-            {/* <button>Search</button> */}
         </StyledPlayersForm>
     )
 }
