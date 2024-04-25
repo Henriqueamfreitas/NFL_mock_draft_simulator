@@ -3,8 +3,9 @@ import { PlayersList } from "../../components/PlayersList"
 import { PlayersForm } from "../../components/PlayersList/PlayersForm"
 import { StyledHomePage } from "./style"
 import { TradeDiv } from "../../components/TradeDiv"
+import { useEffect } from "react"
 
-export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer, setDraftedPlayer, pick, setPick, searchPlayer, setSearchPlayer, formData, setFormData, page, setPage, teamInfo, setTeamInfo, tradeData, setTradeData, originalTeamTradedPlayer, setOriginalTeamTradedPlayer, tradingTeamTradedPlayer, setTradingTeamTradedPlayer }) => {
+export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer, setDraftedPlayer, pick, setPick, searchPlayer, setSearchPlayer, formData, setFormData, page, setPage, teamInfo, setTeamInfo, tradeData, setTradeData, originalTeamTradedPlayer, setOriginalTeamTradedPlayer, tradingTeamTradedPlayer, setTradingTeamTradedPlayer, numberOfRounds, setNumberOfRounds }) => {
     let teamPicksString = ""
     let teamPicksArr = []
 
@@ -29,9 +30,45 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
         window.location.reload()
     }
 
+    // const numberOfRounds = (e) => {
+    //     setNumberOfRounds(Number(e.target.value))
+        
+    //     let updatedRounds = []
+    //     for(let i=0; i<rounds.length; i+=1){
+    //         if(i<=numberOfRounds-1){
+    //             updatedRounds.push(rounds[i])
+    //         }
+    //     }
+    
+    //     setRounds(updatedRounds)
+    // }
+    useEffect(() => {
+        let updatedRounds = []
+        for(let i=0; i<rounds.length; i+=1){
+            if(i<=numberOfRounds-1){
+                updatedRounds.push(rounds[i])
+            }
+        }
+    
+        setRounds(updatedRounds)
+    }, [numberOfRounds])
+
+
     return (
         <StyledHomePage>
             <section>
+            <label htmlFor="numberOfRounds">How many rounds do you want to mock?</label>
+            <select name="numberOfRounds" onChange={(e) => setNumberOfRounds(Number(e.target.value))}>
+                <option value="">Select the number of rounds</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            <span>If you want to change the number of rounds, please click on the Restart Draft button</span>
             <button onClick={restartDraft}>
                 Restart Draft
             </button>

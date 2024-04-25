@@ -53,6 +53,8 @@ function App() {
   const [originalTeamTradedPlayer, setOriginalTeamTradedPlayer] = useState(null)
   const [tradingTeamTradedPlayer, setTradingTeamTradedPlayer] = useState(null)
 
+  const [numberOfRounds, setNumberOfRounds] = useState(7)
+
   // console.log(teams)
   // console.log(rounds)
   // console.log(pick)
@@ -81,6 +83,8 @@ function App() {
       setOriginalTeamTradedPlayer={setOriginalTeamTradedPlayer}
       tradingTeamTradedPlayer={tradingTeamTradedPlayer}
       setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}
+      numberOfRounds={numberOfRounds}
+      setNumberOfRounds={setNumberOfRounds}
     />
   );
 }
