@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { StyledTradeDiv } from "./style"
+import { StyledH1, StyledH2, StyledSpan } from "../../styles/typography.js"
 
 export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData, teamPicksArr, rounds, setRounds, originalTeamTradedPlayer, setOriginalTeamTradedPlayer, tradingTeamTradedPlayer, setTradingTeamTradedPlayer }) => {
 
@@ -59,9 +60,6 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         }
     }
 
-    // console.log(tradingTeamTradedPlayer)
-
-
     const makeTrade = () => {
         let originalPickTeam 
         let tradingTeam 
@@ -99,11 +97,6 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         }
 
         let updatedTeamInfo = [...teamInfo]
-        // Tiramos o jogador do tradingTeam
-        // PRECISAMOS colocar o jogador do originalPickteam no trading team
-
-        // Tiramos tirar o jogador do originalPickTeam
-        // PRECISAMOS colocar o jogador do tradingTeam no originalPickteam
 
         for(let i=0; i<updatedTeamInfo.length; i+=1){
 
@@ -126,7 +119,6 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
             }        
         }
 
-        console.log(updatedTeamInfo)
         setRounds(updatedRounds)
         let resetTradeData = {
             originalPickTeam: tradeData.originalPickTeam,
@@ -157,7 +149,9 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
         <StyledTradeDiv>
             <div className="tradingTeams">
                 <div className="tradingTeams__trading">
-                    <h1>TEAM TO TRADE</h1>
+                    <StyledH1 fontcolor="white" fontSize="14" fontWeigth="600" >
+                        TEAM TO TRADE
+                    </StyledH1>
                     <select value={tradeData.tradingTeam} onChange={(e) => setTradeData({ ...tradeData, tradingTeam: e.target.value })}>
                         <option value="">Select a team</option>
                         {
@@ -168,7 +162,7 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                     </select>
 
                     <div className="tradingTeams__trading--picks">
-                        <span>2024</span>
+                        <StyledSpan fontcolor="white" fontSize="14" fontWeigth="400" >2024</StyledSpan>
                         {
                             tradingTeamPicksArr.map((pick, index) => {
                                 return (
@@ -195,10 +189,10 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                 </div>
 
                 <div className="tradingTeams__original">
-                    <h1>TEAM WITH THE PICK</h1>
-                    <h2>{pick.team.name}</h2>
+                    <StyledH1 fontcolor="white" fontSize="14" fontWeigth="600" >TEAM WITH THE PICK</StyledH1>
+                    <StyledH2 fontcolor="white" fontSize="14" fontWeigth="400" >{pick.team.name}</StyledH2>
                     <div className="tradingTeams__original--picks">
-                        <span>2024</span>
+                        <StyledSpan fontcolor="white" fontSize="14" fontWeigth="400" >2024</StyledSpan>
                         {
                             teamPicksArr.map((pick, index) => {
                                 return (
@@ -226,7 +220,7 @@ export const TradeDiv = ({ teamInfo, setTeamInfo, pick, tradeData, setTradeData,
                 </div>
             </div>
 
-            <button onClick={() => {makeTrade()}}>Send Trade</button>
+            <button className="sendTradeButton" onClick={() => {makeTrade()}}>Send Trade</button>
         </StyledTradeDiv>
     )
 }
