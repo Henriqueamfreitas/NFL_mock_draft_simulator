@@ -4,16 +4,17 @@ import { PlayersForm } from "../../components/PlayersList/PlayersForm"
 import { StyledHomePage } from "./style"
 import { TradeDiv } from "../../components/TradeDiv"
 import { useEffect } from "react"
+import { PlayerInfoModal } from "../../components/PlayerInfoModal"
 
-export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer, setDraftedPlayer, pick, setPick, searchPlayer, setSearchPlayer, formData, setFormData, page, setPage, teamInfo, setTeamInfo, tradeData, setTradeData, originalTeamTradedPlayer, setOriginalTeamTradedPlayer, tradingTeamTradedPlayer, setTradingTeamTradedPlayer, numberOfRounds, setNumberOfRounds }) => {
+export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer, setDraftedPlayer, pick, setPick, searchPlayer, setSearchPlayer, formData, setFormData, page, setPage, teamInfo, setTeamInfo, tradeData, setTradeData, originalTeamTradedPlayer, setOriginalTeamTradedPlayer, tradingTeamTradedPlayer, setTradingTeamTradedPlayer, numberOfRounds, setNumberOfRounds, viewPlayerInfo, setViewPlayerInfo, isPlayerInfoModalOpen, setIsPlayerInfoModalOpen }) => {
     let teamPicksString = ""
     let teamPicksArr = []
 
-    for(let i=0; i<rounds.length; i+=1){
-        for(let j=0; j<rounds[i].picks.length; j+=1){
-            if(rounds[i].picks[j].team.name === pick?.team.name){
-                teamPicksString+=`${(rounds[i].picks[j].overall)}, `
-                if(rounds[i].picks[j].overall>=pick.overall){
+    for (let i = 0; i < rounds.length; i += 1) {
+        for (let j = 0; j < rounds[i].picks.length; j += 1) {
+            if (rounds[i].picks[j].team.name === pick?.team.name) {
+                teamPicksString += `${(rounds[i].picks[j].overall)}, `
+                if (rounds[i].picks[j].overall >= pick.overall) {
                     teamPicksArr.push((rounds[i].picks[j].overall))
                 }
             }
@@ -30,26 +31,14 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
         window.location.reload()
     }
 
-    // const numberOfRounds = (e) => {
-    //     setNumberOfRounds(Number(e.target.value))
-        
-    //     let updatedRounds = []
-    //     for(let i=0; i<rounds.length; i+=1){
-    //         if(i<=numberOfRounds-1){
-    //             updatedRounds.push(rounds[i])
-    //         }
-    //     }
-    
-    //     setRounds(updatedRounds)
-    // }
     useEffect(() => {
         let updatedRounds = []
-        for(let i=0; i<rounds.length; i+=1){
-            if(i<=numberOfRounds-1){
+        for (let i = 0; i < rounds.length; i += 1) {
+            if (i <= numberOfRounds - 1) {
                 updatedRounds.push(rounds[i])
             }
         }
-    
+
         setRounds(updatedRounds)
     }, [numberOfRounds])
 
@@ -57,21 +46,21 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
     return (
         <StyledHomePage>
             <section>
-            <label htmlFor="numberOfRounds">How many rounds do you want to mock?</label>
-            <select name="numberOfRounds" onChange={(e) => setNumberOfRounds(Number(e.target.value))}>
-                <option value="">Select the number of rounds</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-            </select>
-            <span>If you want to change the number of rounds, please click on the Restart Draft button</span>
-            <button onClick={restartDraft}>
-                Restart Draft
-            </button>
+                <label htmlFor="numberOfRounds">How many rounds do you want to mock?</label>
+                <select name="numberOfRounds" onChange={(e) => setNumberOfRounds(Number(e.target.value))}>
+                    <option value="">Select the number of rounds</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <span>If you want to change the number of rounds, please click on the Restart Draft button</span>
+                <button onClick={restartDraft}>
+                    Restart Draft
+                </button>
                 {
                     rounds.map(round => {
                         return (
@@ -103,16 +92,32 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
 
                 {
                     page === "draft" ?
-                    <div className="draftFilters">
-                        <PlayersForm
-                            searchPlayer={searchPlayer}
-                            setSearchPlayer={setSearchPlayer}
-                            players={players}
-                            setPlayers={setPlayers}
-                            formData={formData}
-                            setFormData={setFormData}
-                        />
-                        <PlayersList
+                        <div className="draftFilters">
+                            <PlayersForm
+                                searchPlayer={searchPlayer}
+                                setSearchPlayer={setSearchPlayer}
+                                players={players}
+                                setPlayers={setPlayers}
+                                formData={formData}
+                                setFormData={setFormData}
+                            />
+                            <PlayersList
+                                players={players}
+                                setPlayers={setPlayers}
+                                pick={pick}
+                                setPick={setPick}
+                                rounds={rounds}
+                                searchPlayer={searchPlayer}
+                                setRounds={setRounds}
+                                formData={formData}
+                                setFormData={setFormData}
+                                viewPlayerInfo={viewPlayerInfo}
+                                setViewPlayerInfo={setViewPlayerInfo}
+                                isPlayerInfoModalOpen={isPlayerInfoModalOpen}
+                                setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}                          
+                            />
+                        </div> :
+                        <TradeDiv
                             players={players}
                             setPlayers={setPlayers}
                             pick={pick}
@@ -122,30 +127,46 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
                             setRounds={setRounds}
                             formData={formData}
                             setFormData={setFormData}
+                            teamInfo={teamInfo}
+                            setTeamInfo={setTeamInfo}
+                            tradeData={tradeData}
+                            setTradeData={setTradeData}
+                            teamPicksArr={teamPicksArr}
+                            originalTeamTradedPlayer={originalTeamTradedPlayer}
+                            setOriginalTeamTradedPlayer={setOriginalTeamTradedPlayer}
+                            tradingTeamTradedPlayer={tradingTeamTradedPlayer}
+                            setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}
                         />
-                    </div> :
-                    <TradeDiv 
-                        players={players}
-                        setPlayers={setPlayers}
-                        pick={pick}
-                        setPick={setPick}
-                        rounds={rounds}
-                        searchPlayer={searchPlayer}
-                        setRounds={setRounds}
-                        formData={formData}
-                        setFormData={setFormData}
-                        teamInfo={teamInfo}
-                        setTeamInfo={setTeamInfo}
-                        tradeData={tradeData}
-                        setTradeData={setTradeData}
-                        teamPicksArr={teamPicksArr}
-                        originalTeamTradedPlayer={originalTeamTradedPlayer}
-                        setOriginalTeamTradedPlayer={setOriginalTeamTradedPlayer}
-                        tradingTeamTradedPlayer={tradingTeamTradedPlayer}
-                        setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}                  
-                    />
                 }
             </section>
+            {
+                isPlayerInfoModalOpen ?
+                <PlayerInfoModal
+                    players={players}
+                setPlayers={setPlayers}
+                pick={pick}
+                setPick={setPick}
+                rounds={rounds}
+                searchPlayer={searchPlayer}
+                setRounds={setRounds}
+                formData={formData}
+                setFormData={setFormData}
+                teamInfo={teamInfo}
+                setTeamInfo={setTeamInfo}
+                tradeData={tradeData}
+                setTradeData={setTradeData}
+                teamPicksArr={teamPicksArr}
+                originalTeamTradedPlayer={originalTeamTradedPlayer}
+                setOriginalTeamTradedPlayer={setOriginalTeamTradedPlayer}
+                tradingTeamTradedPlayer={tradingTeamTradedPlayer}
+                setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}
+                viewPlayerInfo={viewPlayerInfo}
+                setViewPlayerInfo={setViewPlayerInfo}
+                isPlayerInfoModalOpen={isPlayerInfoModalOpen}
+                    setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}          
+                /> :
+                null
+            }
         </StyledHomePage>
     )
 }

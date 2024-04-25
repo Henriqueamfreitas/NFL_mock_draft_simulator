@@ -8,6 +8,9 @@ function App() {
   const LsRounds = JSON.parse(localStorage.getItem("@rounds"))
   const LsPlayers = JSON.parse(localStorage.getItem("@players"))
   const LsPick = JSON.parse(localStorage.getItem("@pick"))
+
+  const [viewPlayerInfo, setViewPlayerInfo] = useState(null)
+  const [isPlayerInfoModalOpen, setIsPlayerInfoModalOpen] = useState(false)
   
   const [rounds, setRounds] = useState(LsRounds ? LsRounds : picks.rounds)
   const [players, setPlayers] = useState(LsPlayers ? LsPlayers : prospects.prospects)
@@ -85,6 +88,10 @@ function App() {
       setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}
       numberOfRounds={numberOfRounds}
       setNumberOfRounds={setNumberOfRounds}
+      viewPlayerInfo={viewPlayerInfo}
+      setViewPlayerInfo={setViewPlayerInfo}
+      isPlayerInfoModalOpen={isPlayerInfoModalOpen}
+      setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}
     />
   );
 }

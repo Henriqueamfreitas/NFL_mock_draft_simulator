@@ -1,6 +1,6 @@
 import { StyledPlayerCard } from "./style.js"
 
-export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, setPlayers, setFormData }) => {
+export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, setPlayers, setFormData, viewPlayerInfo, setViewPlayerInfo, isPlayerInfoModalOpen, setIsPlayerInfoModalOpen }) => {
     const draftPlayer = (player) => {
         let updatedRounds = [...rounds]
         updatedRounds.map(round => {
@@ -32,9 +32,14 @@ export const PlayerCard = ({ player, pick, setPick, rounds, setRounds, players, 
         })
     }
 
+    const showPlayerInfoModal= () => {
+        setViewPlayerInfo(player)
+        setIsPlayerInfoModalOpen(true)
+    }
+    
     return(
         <StyledPlayerCard>
-            <div>
+            <div onClick={showPlayerInfoModal}>
                 <h3>{player.name}</h3>
                 <h3>{player.position}</h3>
             </div>

@@ -1,9 +1,8 @@
 import { PlayerCard } from "./PlayerCard"
 import { StyledPlayerList } from "./style.js"
 
-export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlayers, searchPlayer, formData, setFormData }) => {
+export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlayers, searchPlayer, formData, setFormData, viewPlayerInfo, setViewPlayerInfo, isPlayerInfoModalOpen, setIsPlayerInfoModalOpen }) => {
     const list = (formData.player === "" && formData.position === "") ? players : searchPlayer
-
     return (
 
         <StyledPlayerList>
@@ -20,6 +19,10 @@ export const PlayersList = ({ players, pick, setPick, rounds, setRounds, setPlay
                             rounds={rounds}
                             setRounds={setRounds}
                             setFormData={setFormData}
+                            viewPlayerInfo={viewPlayerInfo}
+                            setViewPlayerInfo={setViewPlayerInfo}
+                            isPlayerInfoModalOpen={isPlayerInfoModalOpen}
+                            setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}                      
                         />
                     )
                 })
