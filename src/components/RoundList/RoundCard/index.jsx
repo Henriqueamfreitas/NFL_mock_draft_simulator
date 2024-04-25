@@ -1,4 +1,5 @@
 import { StyledRoundCard } from "./style"
+import { StyledSpan } from "../../../styles/typography"
 
 export const RoundCard = ({ players, filteredPick, pick, teamInfo }) => {
     const player = () => {

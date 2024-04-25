@@ -6,6 +6,8 @@ import { TradeDiv } from "../../components/TradeDiv"
 import { useEffect } from "react"
 import { PlayerInfoModal } from "../../components/PlayerInfoModal"
 
+import { StyledH1, StyledH2, StyledSpan, StyledLabel } from "../../styles/typography"
+
 export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer, setDraftedPlayer, pick, setPick, searchPlayer, setSearchPlayer, formData, setFormData, page, setPage, teamInfo, setTeamInfo, tradeData, setTradeData, originalTeamTradedPlayer, setOriginalTeamTradedPlayer, tradingTeamTradedPlayer, setTradingTeamTradedPlayer, numberOfRounds, setNumberOfRounds, viewPlayerInfo, setViewPlayerInfo, isPlayerInfoModalOpen, setIsPlayerInfoModalOpen }) => {
     let teamPicksString = ""
     let teamPicksArr = []
@@ -45,9 +47,17 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
 
     return (
         <StyledHomePage>
-            <section>
-                <label htmlFor="numberOfRounds">How many rounds do you want to mock?</label>
-                <select name="numberOfRounds" onChange={(e) => setNumberOfRounds(Number(e.target.value))}>
+            <StyledH1 fontcolor="white" fontSize="40" fontWeigth="900">
+                Mock Draft NFL 2024
+            </StyledH1>
+            <header className="header">
+                <button onClick={restartDraft}>
+                    Restart Draft
+                </button>
+                <StyledLabel fontcolor="white" fontSize="14" fontWeigth="500" htmlFor="numberOfRounds">
+                    How many rounds do you want to mock?
+                </StyledLabel>
+                <select name="numberOfRounds" onChange={(e) => e.target.value !== "" ?  setNumberOfRounds(Number(e.target.value)) : null}>
                     <option value="">Select the number of rounds</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -57,10 +67,11 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
                     <option value="6">6</option>
                     <option value="7">7</option>
                 </select>
-                <span>If you want to change the number of rounds, please click on the Restart Draft button</span>
-                <button onClick={restartDraft}>
-                    Restart Draft
-                </button>
+                <StyledSpan fontcolor="white" fontSize="12" fontWeigth="400">
+                    If you want to change the number of rounds, please click on the Restart Draft button
+                </StyledSpan>
+            </header>
+            <section className="">
                 {
                     rounds.map(round => {
                         return (
@@ -80,9 +91,15 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
 
             <section>
                 <div>
-                    <h1>Overall: {pick?.overall}</h1>
-                    <h1>{pick?.team.market} {pick?.team.name}</h1>
-                    <h1>{teamPicksString}</h1>
+                    <StyledH2 fontcolor="white" fontSize="16" fontWeigth="600">
+                        Overall: {pick?.overall}
+                    </StyledH2>
+                    <StyledSpan fontcolor="white" fontSize="14" fontWeigth="500">
+                        {pick?.team.market} {pick?.team.name}
+                    </StyledSpan>
+                    <StyledSpan fontcolor="white" fontSize="14" fontWeigth="500">
+                        {teamPicksString}
+                    </StyledSpan>
                 </div>
 
                 <div>
@@ -114,7 +131,7 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
                                 viewPlayerInfo={viewPlayerInfo}
                                 setViewPlayerInfo={setViewPlayerInfo}
                                 isPlayerInfoModalOpen={isPlayerInfoModalOpen}
-                                setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}                          
+                                setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}
                             />
                         </div> :
                         <TradeDiv
@@ -141,31 +158,31 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
             </section>
             {
                 isPlayerInfoModalOpen ?
-                <PlayerInfoModal
-                    players={players}
-                setPlayers={setPlayers}
-                pick={pick}
-                setPick={setPick}
-                rounds={rounds}
-                searchPlayer={searchPlayer}
-                setRounds={setRounds}
-                formData={formData}
-                setFormData={setFormData}
-                teamInfo={teamInfo}
-                setTeamInfo={setTeamInfo}
-                tradeData={tradeData}
-                setTradeData={setTradeData}
-                teamPicksArr={teamPicksArr}
-                originalTeamTradedPlayer={originalTeamTradedPlayer}
-                setOriginalTeamTradedPlayer={setOriginalTeamTradedPlayer}
-                tradingTeamTradedPlayer={tradingTeamTradedPlayer}
-                setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}
-                viewPlayerInfo={viewPlayerInfo}
-                setViewPlayerInfo={setViewPlayerInfo}
-                isPlayerInfoModalOpen={isPlayerInfoModalOpen}
-                    setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}          
-                /> :
-                null
+                    <PlayerInfoModal
+                        players={players}
+                        setPlayers={setPlayers}
+                        pick={pick}
+                        setPick={setPick}
+                        rounds={rounds}
+                        searchPlayer={searchPlayer}
+                        setRounds={setRounds}
+                        formData={formData}
+                        setFormData={setFormData}
+                        teamInfo={teamInfo}
+                        setTeamInfo={setTeamInfo}
+                        tradeData={tradeData}
+                        setTradeData={setTradeData}
+                        teamPicksArr={teamPicksArr}
+                        originalTeamTradedPlayer={originalTeamTradedPlayer}
+                        setOriginalTeamTradedPlayer={setOriginalTeamTradedPlayer}
+                        tradingTeamTradedPlayer={tradingTeamTradedPlayer}
+                        setTradingTeamTradedPlayer={setTradingTeamTradedPlayer}
+                        viewPlayerInfo={viewPlayerInfo}
+                        setViewPlayerInfo={setViewPlayerInfo}
+                        isPlayerInfoModalOpen={isPlayerInfoModalOpen}
+                        setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}
+                    /> :
+                    null
             }
         </StyledHomePage>
     )
