@@ -35,9 +35,4 @@ export const StyledHomePage = styled.main`
         }
         margin-bottom: 1rem;
     }
-
-    img{
-        width: 30px;
-        height: 30px;
-    }
 `

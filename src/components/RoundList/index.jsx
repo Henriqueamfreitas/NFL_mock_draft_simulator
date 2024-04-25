@@ -1,12 +1,13 @@
 import { RoundCard } from "./RoundCard"
 import { StyledRoundList } from "./style.js"
+import { StyledH2 } from "../../styles/typography.js"
 
 export const RoundList = ({ players, round, draftedPlayer, setDraftedPlayer, pick, teamInfo }) => {
     const picks = round.picks
 
     return(
         <StyledRoundList className="roundList">    
-            <h2>Round {round.number}</h2>
+            <StyledH2 fontcolor="white" fontSize="20" fontWeigth="600" >Round {round.number}</StyledH2>
             {
                 picks.map(filteredPick => {
                     return(
