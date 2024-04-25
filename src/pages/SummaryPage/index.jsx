@@ -8,26 +8,8 @@ export const SummaryPage = ({ players, setPlayers, rounds, setRounds, draftedPla
     const navigate = useNavigate();
     const roundListRef = useRef(null);
 
-    // const downloadRoundList = () => {
-    //     const roundListContent = document.getElementsByClassName("roundList")[0].outerHTML;
-    //     const blob = new Blob([roundListContent], { type: "text/html" });
-    //     const url = URL.createObjectURL(blob);
-
-    //     const link = document.createElement("a");
-    //     link.href = url;
-    //     link.download = "round_list.html";
-
-    //     // Simula um clique no link para iniciar o download
-    //     link.click();
-
-    //     // Revoga o URL do Blob
-    //     URL.revokeObjectURL(url);
-    //     // console.log(blob)
-    // } 
-
     const downloadRoundList = async () => {
         const roundListElement = roundListRef.current;
-        // console.log(roundListElement)
         try {
             const dataUrl = await htmlToImage.toPng(roundListElement);
             const link = document.createElement('a');
@@ -43,7 +25,7 @@ export const SummaryPage = ({ players, setPlayers, rounds, setRounds, draftedPla
     return (
         <StyledSummaryPage>
             <h1>Summary</h1>
-            <button onClick={() => navigate("/")}>Back</button>
+            <button onClick={() => navigate("/draft")}>Back</button>
             <button onClick={downloadRoundList}>Download</button>
             <div ref={roundListRef} className="roundList">
                 {

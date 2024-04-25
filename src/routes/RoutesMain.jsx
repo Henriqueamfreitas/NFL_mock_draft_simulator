@@ -99,6 +99,7 @@ export const RoutesMain = () => {
           setIsPlayerInfoModalOpen={setIsPlayerInfoModalOpen}
         />
       } />
+
       <Route path="/summary" element={
         <SummaryPage
           players={players}
