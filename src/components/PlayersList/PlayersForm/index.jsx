@@ -39,8 +39,6 @@ export const PlayersForm = ({ searchPlayer, setSearchPlayer, players, setPlayers
                 onChange={(e) => setFormData({...formData, player: e.target.value})} 
             />
 
-            {/* ['QB', 'RB', 'TE', 'WR', 'C', 'OG', 'OL', 'OT', 'CB', 'DB', 'DE', 'DL', 'DT', 'FS', 'SAF', 'LB', 'OLB', 'K', 'P', 'LS'] */}
-
             <select onChange={(e) => setFormData({...formData, position: e.target.value})}>
                 <option value="">Filter by position</option>
                 <option value="QB">QB</option>
@@ -64,7 +62,7 @@ export const PlayersForm = ({ searchPlayer, setSearchPlayer, players, setPlayers
                 <option value="P">P</option>
                 <option value="LS">LS</option>
             </select>
-            <button>Search</button>
+            {/* <button>Search</button> */}
         </StyledPlayersForm>
     )
 }

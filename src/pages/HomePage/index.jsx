@@ -46,7 +46,7 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
 
 
     return (
-        <StyledHomePage>
+        <StyledHomePage page={page}>
             <StyledH1 fontcolor="white" fontSize="40" fontWeigth="900">
                 Mock Draft NFL 2024
             </StyledH1>
@@ -57,7 +57,7 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
                 <StyledLabel fontcolor="white" fontSize="14" fontWeigth="500" htmlFor="numberOfRounds">
                     How many rounds do you want to do your mock?
                 </StyledLabel>
-                <select name="numberOfRounds" onChange={(e) => e.target.value !== "" ?  setNumberOfRounds(Number(e.target.value)) : null}>
+                <select name="numberOfRounds" onChange={(e) => e.target.value !== "" ? setNumberOfRounds(Number(e.target.value)) : null}>
                     <option value="">Select the number of rounds</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -90,21 +90,18 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
             </section>
 
             <section>
-                <div>
-                    <StyledH2 fontcolor="white" fontSize="16" fontWeigth="600">
-                        Overall: {pick?.overall}
+                <div className="teamDraftingInfo">
+                    <StyledH2 fontcolor="black" fontSize="16" fontWeigth="600">
+                        On the Clock: {pick?.team.market} {pick?.team.name}, Pick: {pick?.overall}
                     </StyledH2>
-                    <StyledSpan fontcolor="white" fontSize="14" fontWeigth="500">
-                        {pick?.team.market} {pick?.team.name}
-                    </StyledSpan>
-                    <StyledSpan fontcolor="white" fontSize="14" fontWeigth="500">
-                        {teamPicksString}
+                    <StyledSpan fontcolor="black" fontSize="14" fontWeigth="500">
+                        Picks: {teamPicksString}
                     </StyledSpan>
                 </div>
 
-                <div>
-                    <button onClick={() => setPage("draft")}>Draft</button>
-                    <button onClick={() => setPage("trade")}>Trade</button>
+                <div className="pageButtons">
+                    <button className="pageButtons__draft" onClick={() => setPage("draft")}>Draft</button>
+                    <button className="pageButtons__trade" onClick={() => setPage("trade")}>Trade</button>
                 </div>
 
                 {
