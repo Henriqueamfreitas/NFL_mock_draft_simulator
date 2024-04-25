@@ -35,4 +35,11 @@ export const StyledHomePage = styled.main`
         }
         margin-bottom: 1rem;
     }
+
+    .rounds{
+        height: 175px;
+        overflow-x: scroll;
+        max-height: 175px;
+        margin-bottom: 1rem;
+    }
 `

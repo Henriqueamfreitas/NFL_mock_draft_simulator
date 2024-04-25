@@ -5,16 +5,18 @@ export const RoundCard = ({ players, filteredPick, pick, teamInfo }) => {
     const player = () => {
         if (filteredPick.player_drafted) {
             return (
-                <div>
+                <div className="playerDraftedContainer">
                     <StyledSpan fontcolor="black" fontSize="14" fontWeigth="500" >
                         {filteredPick.player_drafted.name}
                     </StyledSpan>
-                    <StyledSpan fontcolor="black" fontSize="14" fontWeigth="500" >
-                        {filteredPick.player_drafted.position}
-                    </StyledSpan>
-                    <StyledSpan fontcolor="black" fontSize="14" fontWeigth="500" >
-                        {filteredPick.player_drafted.team_name}
-                    </StyledSpan>
+                    <div>
+                        <StyledSpan fontcolor="black" fontSize="14" fontWeigth="400" >
+                            {filteredPick.player_drafted.position}
+                        </StyledSpan>
+                        <StyledSpan fontcolor="black" fontSize="14" fontWeigth="400" >
+                            {filteredPick.player_drafted.team_name}
+                        </StyledSpan>
+                    </div>
                 </div>
             )
         } else if (filteredPick.overall === pick.overall) {
@@ -31,7 +33,7 @@ export const RoundCard = ({ players, filteredPick, pick, teamInfo }) => {
         }
     }
     return (
-        <StyledRoundCard>
+        <StyledRoundCard selectingteam={filteredPick.overall === pick.overall}>
             <div className="leftContainer">
                 <div className="leftContainer__pickInfo">
                     <StyledH3 fontcolor="black" fontSize="14" fontWeigth="500" >

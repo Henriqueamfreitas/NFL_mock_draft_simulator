@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const StyledRoundCard = styled.li`
-    background-color: rgb(250,250,250);
+    /* background-color: rgb(260,260,260); */
+    background-color: ${({selectingteam}) => selectingteam ? "rgb(190,190,190)" : "rgb(250,250,250)"};
     border-radius: .5rem;
 
     display: flex;
@@ -21,5 +22,16 @@ export const StyledRoundCard = styled.li`
     img{
         width: 35px;
         height: 35px;
+    }
+
+    .playerDraftedContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        div{
+            display: flex;
+            gap: .25rem;
+            justify-content: flex-end;
+        }
     }
 `

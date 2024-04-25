@@ -55,7 +55,7 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
                     Restart Draft
                 </button>
                 <StyledLabel fontcolor="white" fontSize="14" fontWeigth="500" htmlFor="numberOfRounds">
-                    How many rounds do you want to mock?
+                    How many rounds do you want to do your mock?
                 </StyledLabel>
                 <select name="numberOfRounds" onChange={(e) => e.target.value !== "" ?  setNumberOfRounds(Number(e.target.value)) : null}>
                     <option value="">Select the number of rounds</option>
@@ -71,7 +71,7 @@ export const HomePage = ({ players, setPlayers, rounds, setRounds, draftedPlayer
                     If you want to change the number of rounds, please click on the Restart Draft button
                 </StyledSpan>
             </header>
-            <section className="">
+            <section className="rounds">
                 {
                     rounds.map(round => {
                         return (
